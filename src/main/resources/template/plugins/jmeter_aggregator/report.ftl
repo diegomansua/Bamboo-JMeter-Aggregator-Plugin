@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta name="tab" content="Load Test Reports"/>
+    <meta name="tab" content="jmeterAggregatorReports"/>
     <meta name="decorator" content="plan"/>
 </head>
 
