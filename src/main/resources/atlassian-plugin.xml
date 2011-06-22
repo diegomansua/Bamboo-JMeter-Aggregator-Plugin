@@ -1,0 +1,76 @@
+<!-- Atlassian plugin XML - defining your plugin -->
+
+<atlassian-plugin key="jmeterAggregator" name="JMeter Aggregator">
+
+	<plugin-info>
+		<description>
+			Aggregates and reports on JMeter load tests
+		</description>
+		<version>1.0.0</version>
+		<application-version min="1.0" max="3.2" />
+		<vendor name="Atlassian Software Systems Pty Ltd"
+			url="http://www.atlassian.com" />
+	</plugin-info>
+
+    <resource type="i18n" name="i18n" location="com.atlassian.bamboo.plugins.jmeter_aggregator.i18n"/>
+
+    <xwork key="jmeterAggregatorReportAction"
+		name="Provides graphs of JMeter results">
+		<package name="jmeter" extends="buildView">
+			<action name="viewLoadTestReport"
+				class="com.atlassian.bamboo.plugins.jmeter_aggregator.web.AggregationReport"
+				method="view">
+				<result name="success" type="freemarker">/template/plugins/jmeter_aggregator/report.ftl</result>
+				<result name="input" type="freemarker">/template/plugins/jmeter_aggregator/report.ftl</result>
+			</action>
+			<action name="generateLoadTestReport"
+				class="com.atlassian.bamboo.plugins.jmeter_aggregator.web.AggregationReport"
+				method="generate">
+				<result name="success" type="freemarker">/template/plugins/jmeter_aggregator/report.ftl</result>
+			</action>
+		</package>
+	</xwork>
+
+	<buildProcessor key="jmeterAggregatorBuildProcessor"
+		name="JMeter Aggregator Build Processor"
+		class="com.atlassian.bamboo.plugins.jmeter_aggregator.builder.JmeterAggregatorBuildProcessor">
+		<skipIfFailed>true</skipIfFailed>
+		<description>A JMeter log build processor</description>
+	</buildProcessor>
+
+    <buildProcessorServer key="jmeterAggregatorBuildProcessorServer"
+        name="JMeter Aggregator Build Processor Server"
+        class="com.atlassian.bamboo.plugins.jmeter_aggregator.builder.JmeterAggregatorBuildProcessorServer">
+        <skipIfFailed>true</skipIfFailed>
+        <resource type="freemarker" name="edit"
+            location="template/plugins/buildProcessor/jmeterAggregatorProcessorEdit.ftl" />
+        <resource type="freemarker" name="view"
+            location="template/plugins/buildProcessor/jmeterAggregatorProcessorView.ftl" />
+        <description>A JMeter log build processor</description>
+    </buildProcessorServer>
+    
+
+    <indexReader key="jmeterAggregatorIndexReader"
+		name="Reads JMeter Aggregator result values from index"
+		class="com.atlassian.bamboo.plugins.jmeter_aggregator.index.JmeterResultsReader">
+		<description>
+			Reads the JMeter Aggregator result from an index document and populates
+			into build result summary
+		</description>
+	</indexReader>
+
+	<postBuildIndexWriter key="jmeterAggregatorIndexWriter"
+		name="Writes JMeter Aggregator result values to index"
+		class="com.atlassian.bamboo.plugins.jmeter_aggregator.index.JmeterResultsWriter">
+		<description>
+			Writes the JMeter Aggregator result to an index document
+		</description>
+	</postBuildIndexWriter>
+
+    <web-item key="jmeterAggregatorReports" name="jmeterAggregatorReports" section="build.subMenu/build" weight="60">
+      <label key="Load Test Reports"/>
+      <link>/build/viewLoadTestReport.action?buildKey=${buildKey}</link>
+      <condition class="com.atlassian.bamboo.plugins.jmeter_aggregator.web.BambooLoadTestReportCondition" />
+    </web-item>
+
+</atlassian-plugin>
