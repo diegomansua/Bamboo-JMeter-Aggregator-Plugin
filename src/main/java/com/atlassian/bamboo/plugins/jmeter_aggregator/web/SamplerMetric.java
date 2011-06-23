@@ -1,14 +1,14 @@
 package com.atlassian.bamboo.plugins.jmeter_aggregator.web;
 
-import com.atlassian.bamboo.plugins.jmeter_aggregator.Sampler;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.log4j.Logger;
+
+import com.atlassian.bamboo.plugins.jmeter_aggregator.Sampler;
 
 /**
  * Metric that can be used in a graph
  */
-public enum SamplerMetric
-{
+public enum SamplerMetric {
     COUNT("count", "Number of samples"),
     SUCCESS_COUNT("successCount", "Number of successful samples"),
     PERCENT_SUCCESS("percentSuccess", "Percentage of successful samples"),
@@ -24,15 +24,13 @@ public enum SamplerMetric
 
     private static final Logger log = Logger.getLogger(SamplerMetric.class);
 
-    private SamplerMetric(String property, String description)
-    {
+    private SamplerMetric(final String property, final String description) {
         this.property = property;
         this.description = description;
         this.scale = 1.0;
     }
 
-    private SamplerMetric(String property, String description, double scale)
-    {
+    private SamplerMetric(final String property, final String description, final double scale) {
         this.property = property;
         this.description = description;
         this.scale = scale;
@@ -42,28 +40,22 @@ public enum SamplerMetric
     private final String description;
     private final double scale;
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public Number getValueFromSampler(Sampler sampler)
-    {
-        try
-        {
-            return (Number) PropertyUtils.getProperty(sampler, property);
-        }
-        catch (Exception e)
-        {
+    public Number getValueFromSampler(final Sampler sampler) {
+        try {
+            return (Number)PropertyUtils.getProperty(sampler, property);
+        } catch (final Exception e) {
             // This should never happen
             log.error("Error copying properties", e);
             return null;
         }
     }
 
-    public long getScaledValueFromSampler(Sampler sampler)
-    {
-        return (long) (scale * getValueFromSampler(sampler).doubleValue());
+    public long getScaledValueFromSampler(final Sampler sampler) {
+        return (long)(scale * getValueFromSampler(sampler).doubleValue());
     }
 
 }

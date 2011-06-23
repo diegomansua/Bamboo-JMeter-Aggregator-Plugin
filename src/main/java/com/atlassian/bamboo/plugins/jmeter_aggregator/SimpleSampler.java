@@ -3,8 +3,7 @@ package com.atlassian.bamboo.plugins.jmeter_aggregator;
 /**
  * Simple sampler, for storing sampler results so they can be serialised/deserialised by XStream
  */
-public class SimpleSampler implements Sampler
-{
+public class SimpleSampler implements Sampler {
     private String label;
     private int successCount;
     private long startTime;
@@ -21,153 +20,138 @@ public class SimpleSampler implements Sampler
     private long totalTime;
     private long standardDeviation;
 
-    public long getStandardDeviation()
-    {
+    @Override
+    public long getStandardDeviation() {
         return standardDeviation;
     }
- 
-    public void setStandardDeviation(long standardDeviation)
-    {
+
+    public void setStandardDeviation(final long standardDeviation) {
         this.standardDeviation = standardDeviation;
     }
 
-    public String getLabel()
-    {
+    @Override
+    public String getLabel() {
         return label;
     }
 
-    public void setLabel(String label)
-    {
+    public void setLabel(final String label) {
         this.label = label;
     }
 
-    public int getSuccessCount()
-    {
+    @Override
+    public int getSuccessCount() {
         return successCount;
     }
 
-    public void setSuccessCount(int successCount)
-    {
+    public void setSuccessCount(final int successCount) {
         this.successCount = successCount;
     }
 
-    public long getStartTime()
-    {
+    @Override
+    public long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(long startTime)
-    {
+    public void setStartTime(final long startTime) {
         this.startTime = startTime;
     }
 
-    public long getFinishTime()
-    {
+    @Override
+    public long getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(long finishTime)
-    {
+    public void setFinishTime(final long finishTime) {
         this.finishTime = finishTime;
     }
 
-    public long getMaxValue()
-    {
+    @Override
+    public long getMaxValue() {
         return maxValue;
     }
 
-    public void setMaxValue(long maxValue)
-    {
+    public void setMaxValue(final long maxValue) {
         this.maxValue = maxValue;
     }
 
-    public long getMinValue()
-    {
+    @Override
+    public long getMinValue() {
         return minValue;
     }
 
-    public void setMinValue(long minValue)
-    {
+    public void setMinValue(final long minValue) {
         this.minValue = minValue;
     }
 
-    public long getTotalValue()
-    {
+    @Override
+    public long getTotalValue() {
         return totalValue;
     }
 
-    public void setTotalValue(long totalValue)
-    {
+    public void setTotalValue(final long totalValue) {
         this.totalValue = totalValue;
     }
 
-    public long getMedianValue()
-    {
+    @Override
+    public long getMedianValue() {
         return medianValue;
     }
 
-    public void setMedianValue(long medianValue)
-    {
+    public void setMedianValue(final long medianValue) {
         this.medianValue = medianValue;
     }
 
-    public long getNinetyPercentValue()
-    {
+    @Override
+    public long getNinetyPercentValue() {
         return ninetyPercentValue;
     }
 
-    public void setNinetyPercentValue(long ninetyPercentValue)
-    {
+    public void setNinetyPercentValue(final long ninetyPercentValue) {
         this.ninetyPercentValue = ninetyPercentValue;
     }
 
-    public long getThroughput()
-    {
+    @Override
+    public long getThroughput() {
         return throughput;
     }
 
-    public void setThroughput(long throughput)
-    {
+    public void setThroughput(final long throughput) {
         this.throughput = throughput;
     }
 
-    public long getAverageValue()
-    {
+    @Override
+    public long getAverageValue() {
         return averageValue;
     }
 
-    public void setAverageValue(long averageValue)
-    {
+    public void setAverageValue(final long averageValue) {
         this.averageValue = averageValue;
     }
 
-    public long getCount()
-    {
+    @Override
+    public long getCount() {
         return count;
     }
 
-    public void setCount(long count)
-    {
+    public void setCount(final long count) {
         this.count = count;
     }
 
-    public int getPercentSuccess()
-    {
+    @Override
+    public int getPercentSuccess() {
         return percentSuccess;
     }
 
-    public void setPercentSuccess(int percentSuccess)
-    {
+    public void setPercentSuccess(final int percentSuccess) {
         this.percentSuccess = percentSuccess;
     }
 
-    public long getTotalTime()
-    {
+    @Override
+    public long getTotalTime() {
         return totalTime;
     }
 
-    public void setTotalTime(long totalTime)
-    {
+    public void setTotalTime(final long totalTime) {
         this.totalTime = totalTime;
     }
 }

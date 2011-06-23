@@ -2,8 +2,7 @@ package com.atlassian.bamboo.plugins.jmeter_aggregator.builder;
 
 import com.atlassian.bamboo.plugins.jmeter_aggregator.web.SamplerMetric;
 
-public class SamplerAssertion
-{
+public class SamplerAssertion {
     public final static String ANY_LABEL = "_ANY";
     public final static String TOTAL_LABEL = "_TOTAL";
 
@@ -12,36 +11,30 @@ public class SamplerAssertion
     private final SamplerMetric metric;
     private final String label;
 
-    public SamplerAssertion(long value, AssertionType assertionType, SamplerMetric metric, String label)
-    {
+    public SamplerAssertion(final long value, final AssertionType assertionType, final SamplerMetric metric, final String label) {
         this.value = value;
         this.assertionType = assertionType;
         this.metric = metric;
         this.label = label;
     }
 
-    public long getValue()
-    {
+    public long getValue() {
         return value;
     }
 
-    public AssertionType getAssertionType()
-    {
+    public AssertionType getAssertionType() {
         return assertionType;
     }
 
-    public SamplerMetric getMetric()
-    {
+    public SamplerMetric getMetric() {
         return metric;
     }
 
-    public String getLabel()
-    {
+    public String getLabel() {
         return label;
     }
 
-    public static enum AssertionType
-    {
+    public static enum AssertionType {
         GREATER_THAN("greater than"),
         LESS_THAN("less than"),
         EQUALS("equals"),
@@ -55,13 +48,11 @@ public class SamplerAssertion
 
         private final String description;
 
-        private AssertionType(String description)
-        {
+        private AssertionType(final String description) {
             this.description = description;
         }
 
-        public String getDescription()
-        {
+        public String getDescription() {
             return description;
         }
     }

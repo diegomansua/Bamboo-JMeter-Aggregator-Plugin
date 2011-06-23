@@ -2,36 +2,30 @@ package com.atlassian.bamboo.plugins.jmeter_aggregator.builder;
 
 import com.atlassian.bamboo.plugins.jmeter_aggregator.web.SamplerMetric;
 
-public class SamplerSeries
-{
+public class SamplerSeries {
 
     private String label;
 
     private SamplerMetric metric;
 
-    public String getLabel()
-    {
+    public String getLabel() {
         return label;
     }
 
-    public void setLabel(String label)
-    {
+    public void setLabel(final String label) {
         this.label = label;
     }
 
-    public SamplerMetric getMetric()
-    {
+    public SamplerMetric getMetric() {
         return metric;
     }
 
-    public void setMetric(SamplerMetric metric)
-    {
+    public void setMetric(final SamplerMetric metric) {
         this.metric = metric;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((metric == null) ? 0 : metric.hashCode());
@@ -40,34 +34,35 @@ public class SamplerSeries
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        final SamplerSeries other = (SamplerSeries) obj;
-        if (metric == null)
-        {
-            if (other.metric != null)
-                return false;
         }
-        else if (!metric.equals(other.metric))
+        if (obj == null) {
             return false;
-        if (label == null)
-        {
-            if (other.label != null)
-                return false;
         }
-        else if (!label.equals(other.label))
+        if (getClass() != obj.getClass()) {
             return false;
+        }
+        final SamplerSeries other = (SamplerSeries)obj;
+        if (metric == null) {
+            if (other.metric != null) {
+                return false;
+            }
+        } else if (!metric.equals(other.metric)) {
+            return false;
+        }
+        if (label == null) {
+            if (other.label != null) {
+                return false;
+            }
+        } else if (!label.equals(other.label)) {
+            return false;
+        }
         return true;
     }
 
-    public SamplerSeries(String label, SamplerMetric metric)
-    {
+    public SamplerSeries(final String label, final SamplerMetric metric) {
         super();
         this.label = label;
         this.metric = metric;

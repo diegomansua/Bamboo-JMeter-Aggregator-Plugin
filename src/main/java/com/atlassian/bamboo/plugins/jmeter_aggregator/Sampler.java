@@ -1,7 +1,6 @@
 package com.atlassian.bamboo.plugins.jmeter_aggregator;
 
-public interface Sampler
-{
+public interface Sampler {
     String getLabel();
 
     int getSuccessCount();
@@ -30,5 +29,5 @@ public interface Sampler
 
     long getTotalTime();
 
-    long getStandardDeviation();    
+    long getStandardDeviation();
 }

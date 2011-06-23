@@ -9,20 +9,17 @@ import com.atlassian.bamboo.index.CustomIndexReader;
 import com.atlassian.bamboo.plugins.jmeter_aggregator.builder.JmeterBuildDataHelper;
 import com.atlassian.bamboo.resultsummary.BuildResultsSummary;
 
-public class JmeterResultsReader implements CustomIndexReader
-{
+public class JmeterResultsReader implements CustomIndexReader {
 
-    public void extractFromDocument(Document doc, BuildResultsSummary summary)
-    {
-        Map<String, String> results = summary.getCustomBuildData();
-        Field dataField = doc.getField(JmeterBuildDataHelper.CUSTOM_BUILD_DATA_MAP);
-        if (dataField != null)
-        {
+    @Override
+    public void extractFromDocument(final Document doc, final BuildResultsSummary summary) {
+        final Map<String, String> results = summary.getCustomBuildData();
+        final Field dataField = doc.getField(JmeterBuildDataHelper.CUSTOM_BUILD_DATA_MAP);
+        if (dataField != null) {
             results.put(JmeterBuildDataHelper.CUSTOM_BUILD_DATA_MAP, dataField.stringValue());
         }
-        Field totalField = doc.getField(JmeterBuildDataHelper.CUSTOM_BUILD_DATA_TOTAL);
-        if (totalField != null)
-        {
+        final Field totalField = doc.getField(JmeterBuildDataHelper.CUSTOM_BUILD_DATA_TOTAL);
+        if (totalField != null) {
             results.put(JmeterBuildDataHelper.CUSTOM_BUILD_DATA_TOTAL, totalField.stringValue());
         }
     }
